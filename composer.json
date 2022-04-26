@@ -1,5 +1,5 @@
 {
-    "name": "ulobby/neoeloquent",
+    "name": "andy1631/neoeloquent",
     "description": "Laravel wrapper for the Neo4j graph database REST interface",
     "keywords": [
         "laravel",
