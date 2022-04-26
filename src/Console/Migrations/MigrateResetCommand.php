@@ -15,14 +15,14 @@ class MigrateResetCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'neo4j:migrate:reset';
+    protected $name = "neo4j:migrate:reset";
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Rollback all database migrations';
+    protected $description = "Rollback all database migrations";
 
     /**
      * The migrator instance.
@@ -56,19 +56,20 @@ class MigrateResetCommand extends BaseCommand
             return;
         }
 
-        $this->migrator->setConnection($this->option('database'));
+        $this->migrator->setConnection($this->option("database"));
 
         $this->migrator->reset(
             $this->getMigrationPaths(),
-            $this->option('pretend')
+            $this->option("pretend")
         );
 
         // Once the migrator has run we will grab the note output and send it out to
         // the console screen, since the migrator itself functions without having
         // any instances of the OutputInterface contract passed into the class.
-        foreach ($this->migrator->getNotes() as $note) {
-            $this->output->writeln($note);
-        }
+        //foreach ($this->migrator->getNotes() as $note) {
+        //   $this->output->writeln($note);
+        //}
+        $this->migrator->setOutput($this->output)->reset();
     }
 
     /**
@@ -79,13 +80,33 @@ class MigrateResetCommand extends BaseCommand
     protected function getOptions()
     {
         return [
-            ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use.'],
+            [
+                "database",
+                null,
+                InputOption::VALUE_OPTIONAL,
+                "The database connection to use.",
+            ],
 
-            ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production.'],
+            [
+                "force",
+                null,
+                InputOption::VALUE_NONE,
+                "Force the operation to run when in production.",
+            ],
 
-            ['path', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'The path(s) of migrations files to be executed.'],
+            [
+                "path",
+                null,
+                InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
+                "The path(s) of migrations files to be executed.",
+            ],
 
-            ['pretend', null, InputOption::VALUE_NONE, 'Dump the SQL queries that would be run.'],
+            [
+                "pretend",
+                null,
+                InputOption::VALUE_NONE,
+                "Dump the SQL queries that would be run.",
+            ],
         ];
     }
 }
