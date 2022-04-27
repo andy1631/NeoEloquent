@@ -67,7 +67,7 @@ class MigrateRollbackCommand extends BaseCommand
         //foreach ($this->migrator->getNotes() as $note) {
         //   $this->output->writeln($note);
         //}
-        $this->setOutput($this->output)->rollback();
+        $this->migrator->setOutput($this->output)->rollback();
     }
 
     /**

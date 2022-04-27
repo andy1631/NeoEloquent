@@ -69,7 +69,7 @@ class MigrateResetCommand extends BaseCommand
         //foreach ($this->migrator->getNotes() as $note) {
         //   $this->output->writeln($note);
         //}
-        $this->setOutput($this->output)->reset();
+        $this->migrator->setOutput($this->output)->reset();
     }
 
     /**
