@@ -18,7 +18,7 @@ class MigrationCreator extends IlluminateMigrationCreator
     protected function populateStub($name, $stub, $label)
     {
         $stub = str_replace(
-            ['DummyClass', '{{ class }}', '{{class}}'],
+            ["DummyClass", "{{ class }}", "{{class}}"],
             $this->getClassName($name),
             $stub
         );
@@ -28,8 +28,8 @@ class MigrationCreator extends IlluminateMigrationCreator
         // or update migration from the console instead of typing it manually.
         if (!is_null($label)) {
             $stub = str_replace(
-                ['DummyTable', '{{ table }}', '{{table}}'],
-                $table,
+                ["DummyTable", "{{ table }}", "{{table}}"],
+                $label,
                 $stub
             );
         }
@@ -42,6 +42,6 @@ class MigrationCreator extends IlluminateMigrationCreator
      */
     public function stubPath()
     {
-        return __DIR__.'/stubs';
+        return __DIR__ . "/stubs";
     }
 }
